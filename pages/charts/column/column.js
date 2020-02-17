@@ -4,7 +4,7 @@ var columnChart = null;
 var chartData = {
     main: {
         title: '总成交量',
-        data: [15, 20, 45, 37],
+      data: [[15, 20, 45, 37], [10, 30, 49, 50]],
         categories: ['2012', '2013', '2014', '2015']
     },
     sub: [{
@@ -39,11 +39,17 @@ Page({
             categories: chartData.main.categories,
             series: [{
                 name: '成交量',
-                data: chartData.main.data,
+                data: chartData.main.data[0],
                 format: function (val, name) {
                     return val.toFixed(2) + '万';
                 }
-            }]
+            }, {
+                name: '成交量',
+                data: chartData.main.data[1],
+                format: function (val, name) {
+                  return val.toFixed(2) + '万';
+                }
+              }]
         });
     },
     touchHandler: function (e) {
@@ -82,11 +88,18 @@ Page({
             categories: chartData.main.categories,
             series: [{
                 name: '成交量',
-                data: chartData.main.data,
+                data: chartData.main.data[0],
                 format: function (val, name) {
                     return val.toFixed(2) + '万';
                 }
-            }],
+            },
+               {
+                name: '成交量',
+                data: chartData.main.data[1],
+                format: function (val, name) {
+                  return val.toFixed(2) + '万';
+                }
+              }],
             yAxis: {
                 format: function (val) {
                     return val + '万';
